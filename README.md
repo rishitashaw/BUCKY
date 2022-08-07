@@ -25,4 +25,29 @@ sudo yum install git -y
 git version
 ```
 
-4.
+
+4. install dependencies
+```
+$ npm install -g ganache-cli truffle
+$ cd ShareToWinContract
+$ npm install
+$ ../cd ShareToWinRestApi
+$ npm install
+$ ../cd ShareToWinWeb
+$ npm install
+$ aws dynamodb create-table --table-name ShareToWin --attribute-definitions AttributeName=AssetID,AttributeType=N --key-schema AttributeName=AssetID,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 
+```
+
+5. Port Forwarding 
+![Screenshot (360)](https://user-images.githubusercontent.com/75828535/183305588-1823512c-02e2-46f4-a239-6d8eb257bbd9.png)
+
+6. create accounts
+```
+cd ShareToWinContract
+npx ganache-cli  --acctKeys ../ShareToWinRestApi/ethaccounts.json
+truffle console --network development
+compile
+migrate
+```
+
+7.  
